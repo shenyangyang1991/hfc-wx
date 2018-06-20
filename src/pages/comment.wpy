@@ -1,0 +1,22 @@
+<template>
+  <view class="comment__page page">
+    <view class="comment__page_body">
+      <hero title="评论" desc="参与评论，瓜分10亿HFC" />
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import Hero from '@/components/Hero'
+
+export default class Comment extends wepy.page {
+  config = {
+    navigationBarTitleText: '查看评论'
+  }
+  components = {
+    'hero': Hero
+  }
+}
+</script>

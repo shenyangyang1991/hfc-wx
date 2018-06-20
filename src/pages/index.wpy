@@ -1,0 +1,51 @@
+<template>
+  <view class="page index__page">
+    <view class="index__body">
+      <hero title="推荐" desc="全球最热话题精选" />
+      <repeat for="{{topics}}" key="index" index="index" item="topic">
+        <topic :topic.sync="topic" />
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import { connect } from 'wepy-redux'
+
+import Hero from '@/components/Hero'
+import Topic from '@/components/Topic'
+
+import colors from '@/utils/colors'
+
+@connect({
+})
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '话题'
+  }
+
+  components = {
+    'hero': Hero,
+    'topic': Topic
+  }
+
+  mixins = []
+
+  data = {
+    topics: []
+  }
+
+  events = {
+  }
+
+  onLoad() {
+    this.topics = [{
+      a: colors()
+    }, {
+      a: colors()
+    }]
+  }
+}
+</script>

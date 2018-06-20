@@ -1,0 +1,43 @@
+<template>
+  <view class="page index__page">
+    <view class="index__body">
+      <hero title="关注" desc="您关注的话题都在这里" />
+      <repeat for="{{topics}}" key="index" index="index" item="topic">
+        <topic />
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import { connect } from 'wepy-redux'
+
+import Hero from '@/components/Hero'
+import Topic from '@/components/Topic'
+
+@connect({
+})
+
+export default class Follow extends wepy.page {
+  config = {
+    navigationBarTitleText: '话题'
+  }
+  components = {
+    'hero': Hero,
+    'topic': Topic
+  }
+
+  mixins = []
+
+  data = {
+    topics: [{}, {}, {}, {}]
+  }
+
+  events = {
+  }
+
+  onLoad() {
+  }
+}
+</script>

@@ -1,0 +1,164 @@
+<style lang="less">
+@import '../assets/style/base/fn.less';
+
+@title_font_size: 42rpx;
+@title_font_color: #2b273e;
+@val_font_size: 22rpx;
+@val_font_color: #939393;
+
+.topic__comp {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+
+  .topic__head {
+    display: flex;
+    align-items: center;
+
+    .topic__head_content {
+      flex: 1;
+
+      .topic__head_title {
+        .ellipsis(594rpx);
+        font-size: @title_font_size;
+        color: @title_font_color;
+      }
+
+      .topic__head_prop {
+        display: flex;
+        align-items: center;
+
+        padding-left: 10rpx;
+
+        .topic__head_prop-val {
+          font-size: @val_font_size;
+          color: @val_font_color;
+        }
+
+        .topic__head_prop-split {
+          padding: 0 10rpx;
+        }
+      }
+    }
+
+    .topic__head_follow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 96rpx;
+      height: 56rpx;
+
+      font-size: 22rpx;
+      color: #ffffff;
+
+      background-color: #e3214d;
+
+      border-radius: 200rpx;
+      overflow: hidden;
+    }
+  }
+
+  .topic__body {
+    display: flex;
+
+    height: 276rpx;
+
+    padding: 30rpx 0;
+
+    .topic__preview {
+      flex: 1;
+    }
+
+    .topic__preview_center {
+      display: flex;
+      justify-content: center;
+
+      width: 258rpx;
+    }
+
+    .topic__preview_content {
+      width: 216rpx;
+      height: 216rpx;
+    }
+  }
+
+  .topic__foot {
+    .topic__label {
+      width: 176rpx;
+      height: 52rpx;
+
+      padding-top: 10rpx;
+
+      font-family: 'DIN Condensed';
+      font-size: 32rpx;
+      color: #2b273e;
+
+      text-align: center;
+
+      background-color: #f1f0f5;
+
+      border-radius: 200rpx;
+      overflow: hidden;
+    }
+  }
+}
+</style>
+
+<template>
+  <view class="topic__comp" @tap="toDetail">
+    <view class="topic__head">
+      <view class="topic__head_content">
+        <view class="topic__head_title">
+          中国新说唱你最喜欢谁
+        </view>
+        <view class="topic__head_prop">
+          <view class="topic__head_prop-val">
+            12300 人参与
+          </view>
+          <view class="topic__head_prop-val topic__head_prop-split">
+            | 
+          </view>
+          <view class="topic__head_prop-val">
+            12000 条动态
+          </view>
+        </view>
+      </view>
+      <view class="topic__head_follow">
+        关注
+      </view>
+    </view>
+    <view class="topic__body">
+      <view class="topic__preview">
+        <view class="topic__preview_content">
+        </view>
+      </view>
+      <view class="topic__preview_center">
+        <view class="topic__preview_content">
+        </view>       
+      </view>
+      <view class="topic__preview">
+        <view class="topic__preview_content">
+        </view>
+      </view>
+    </view>
+    <view class="topic__foot">
+      <view class="topic__label">
+        14 HFC
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class Topic extends wepy.component {
+  props = ['topic']
+  methods = {
+    toDetail() {
+      wepy.navigateTo({
+        url: '/pages/detail'
+      })
+    }
+  }
+}
+</script>
