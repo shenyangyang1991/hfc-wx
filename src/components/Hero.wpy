@@ -1,31 +1,31 @@
 <style lang="less">
-  @title_font_size: 72rpx;
-  @title_font_color: #2b273e;
-  @desc_font_size: 28rpx;
-  @desc_font_color: #2e2e30;
+@title_font_size: 72rpx;
+@title_font_color: #2b273e;
+@desc_font_size: 28rpx;
+@desc_font_color: #2e2e30;
 
-  .hero__comp {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 99;
+.hero__comp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
 
-    padding: 0 30rpx 30rpx;
+  padding: 0 30rpx 30rpx;
 
-    background-color: #ffffff;
+  background-color: #ffffff;
 
-    .hero__title {
-      font-size: @title_font_size;
-      color: @title_font_color;
-    }
-
-    .hero__desc {
-      font-size: @desc_font_size;
-      color: @desc_font_color;
-    }
+  .hero__title {
+    font-size: @title_font_size;
+    color: @title_font_color;
   }
+
+  .hero__desc {
+    font-size: @desc_font_size;
+    color: @desc_font_color;
+  }
+}
 </style>
 
 <template>

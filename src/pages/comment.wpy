@@ -1,7 +1,29 @@
 <template>
   <view class="comment__page page">
+    <hero title="评论" desc="参与评论，瓜分10亿HFC" />
     <view class="comment__page_body">
-      <hero title="评论" desc="参与评论，瓜分10亿HFC" />
+      <scroll-view style="height: {{scrollHeight}}px;" scroll-y>
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+        <comment-item />
+      </scroll-view>
+    </view>
+    <view class="comment__page_comments">
+      <form>
+        <view class="comment__page_form">
+          <input class="comment__page_input" cursor-spacing="{{inputPadding}}" type="text" placeholder="说点什么吧" placeholder-style="color: #2e2e30;" />
+          <button class="comment__page_submit" formType="submit">发送</button>
+        </view>
+      </form>
     </view>
   </view>
 </template>
@@ -10,13 +32,31 @@
 import wepy from 'wepy'
 
 import Hero from '@/components/Hero'
+import CommentItem from '@/components/CommentItem'
 
 export default class Comment extends wepy.page {
   config = {
     navigationBarTitleText: '查看评论'
   }
+  data = {
+    winWidth: 0,
+    winHeight: 0,
+    scrollHeight: 0,
+    inputPadding: 0
+  }
   components = {
-    'hero': Hero
+    'hero': Hero,
+    'comment-item': CommentItem
+  }
+  realSize(size) {
+    return this.winWidth / 750 * size
+  }
+  onLoad() {
+    let sys = wepy.getSystemInfoSync() || {}
+    this.winWidth = sys.windowWidth || 750
+    this.winHeight = sys.windowHeight || 1334
+    this.scrollHeight = this.winHeight - this.realSize(98) - this.realSize(168)
+    this.inputPadding = this.realSize(27)
   }
 }
 </script>

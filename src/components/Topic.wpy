@@ -51,7 +51,7 @@
       font-size: 22rpx;
       color: #ffffff;
 
-      background-color: #e3214d;
+      background-color: #e21e4a;
 
       border-radius: 200rpx;
       overflow: hidden;
@@ -116,7 +116,7 @@
             12300 人参与
           </view>
           <view class="topic__head_prop-val topic__head_prop-split">
-            | 
+            |
           </view>
           <view class="topic__head_prop-val">
             12000 条动态
@@ -134,7 +134,7 @@
       </view>
       <view class="topic__preview_center">
         <view class="topic__preview_content">
-        </view>       
+        </view>
       </view>
       <view class="topic__preview">
         <view class="topic__preview_content">

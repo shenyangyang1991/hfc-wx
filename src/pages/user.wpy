@@ -1,0 +1,27 @@
+<template>
+  <view class="user__page page">
+    <user-panel />
+    <view class="user__page_menu">
+      <user-nav title="邀请好友" />
+      <user-nav title="发现探索" />
+      <user-nav title="关于我们" />
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import UserPanel from '@/components/UserPanel'
+import UserNav from '@/components/UserNav'
+
+export default class User extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的'
+  }
+  components = {
+    'user-panel': UserPanel,
+    'user-nav': UserNav
+  }
+}
+</script>

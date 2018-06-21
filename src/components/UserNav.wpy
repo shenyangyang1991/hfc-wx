@@ -1,0 +1,35 @@
+<style lang="less">
+.user__nav_comp {
+  padding: 30rpx 0;
+
+  display: flex;
+  align-items: center;
+
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+
+  .user__nav_title {
+    flex: 1;
+
+    font-size: 40rpx;
+  }
+
+  .user__nav_icon {
+    width: 16rpx;
+    height: 28rpx;
+  }
+}
+</style>
+
+<template>
+  <view class="user__nav_comp">
+    <view class="user__nav_title">{{title}}</view>
+    <image class="user__nav_icon" src="/assets/image/come-in.png" />
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class UserNav extends wepy.component {
+  props = ['title']
+}
+</script>

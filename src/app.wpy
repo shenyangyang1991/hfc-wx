@@ -18,7 +18,8 @@ export default class extends wepy.app {
       'pages/index',
       'pages/follow',
       'pages/detail',
-      'pages/comment'
+      'pages/comment',
+      'pages/user'
     ],
     window: {
       navigationBarBackgroundColor: '#ffffff',
@@ -46,7 +47,7 @@ export default class extends wepy.app {
         iconPath: '/assets/image/follow.png',
         selectedIconPath: '/assets/image/follow-active.png'
       }, {
-        pagePath: 'pages/index',
+        pagePath: 'pages/user',
         text: '我的',
         iconPath: '/assets/image/my.png',
         selectedIconPath: '/assets/image/my-active.png'

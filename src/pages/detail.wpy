@@ -1,13 +1,13 @@
 <template>
   <view class="page detail__page">
+    <detail-hero />
     <view class="detail__page_body">
-      <detail-hero />
       <posts />
       <posts />
       <posts />
-      <view class="detail__page_join">
-        参与话题，赢HFC
-      </view>
+    </view>
+    <view class="detail__page_join">
+      参与话题，赢HFC
     </view>
   </view>
 </template>

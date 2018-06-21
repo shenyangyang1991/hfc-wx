@@ -1,6 +1,6 @@
 // const colors = ['#800080', '#FFFF00', '#FF0000', '#800000', '#808000', '#00FF00', '#008000', '#00FFFF', '#008080', '#FF00FF']
 
-const colors = ['#e3214d', '#31b6e1']
+const colors = ['#e21e4a', '#31b6e1']
 
 export default function () {
   // let rand = Math.random() * 10 << 0

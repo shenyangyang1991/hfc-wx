@@ -1,0 +1,72 @@
+<style lang="less">
+.user__panel_comp {
+  padding: 30rpx;
+
+  .user__panel_user {
+    display: flex;
+    align-items: center;
+
+    height: 128rpx;
+
+    .user__panel_user-name {
+      flex: 1;
+
+      font-size: 64rpx;
+    }
+
+    .user__panel_user-face {
+      width: 128rpx;
+      height: 128rpx;
+    }
+  }
+
+  .user__panel_info {
+    padding-top: 60rpx;
+
+    display: flex;
+    align-items: center;
+
+    .user__panel_col {
+      padding-right: 50rpx;
+
+      .user__panel_val {
+        font-size: 40rpx;
+      }
+
+      .user__panel_key {
+        font-size: 26rpx;
+        color: #9b9b9b;
+      }
+    }
+  }
+}
+</style>
+
+<template>
+  <view class="user__panel_comp">
+    <view class="user__panel_user">
+      <view class="user__panel_user-name">申杨杨</view>
+      <image class="user__panel_user-face" src="/assets/image/face.png" />
+    </view>
+    <view class="user__panel_info">
+      <view class="user__panel_col">
+        <view class="user__panel_val">100</view>
+        <view class="user__panel_key">动态</view>
+      </view>
+      <view class="user__panel_col">
+        <view class="user__panel_val">100</view>
+        <view class="user__panel_key">嗨点</view>
+      </view>
+      <view class="user__panel_col">
+        <view class="user__panel_val">100</view>
+        <view class="user__panel_key">HFC</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class UserPanel extends wepy.component {
+}
+</script>

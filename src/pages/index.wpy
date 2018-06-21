@@ -1,7 +1,7 @@
 <template>
   <view class="page index__page">
+    <hero title="推荐" desc="全球最热话题精选" />
     <view class="index__body">
-      <hero title="推荐" desc="全球最热话题精选" />
       <repeat for="{{topics}}" key="index" index="index" item="topic">
         <topic :topic.sync="topic" />
       </repeat>

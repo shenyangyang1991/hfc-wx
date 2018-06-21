@@ -1,7 +1,7 @@
 <template>
   <view class="page index__page">
+    <hero title="关注" desc="您关注的话题都在这里" />
     <view class="index__body">
-      <hero title="关注" desc="您关注的话题都在这里" />
       <repeat for="{{topics}}" key="index" index="index" item="topic">
         <topic />
       </repeat>
