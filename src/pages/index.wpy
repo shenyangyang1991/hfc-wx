@@ -40,12 +40,16 @@ export default class Index extends wepy.page {
   events = {
   }
 
-  onLoad() {
+  async onLoad() {
     this.topics = [{
       a: colors()
     }, {
       a: colors()
     }]
+    let jscode = await wepy.login()
+    console.log(jscode)
+    let user = await wepy.getUserInfo()
+    console.log(user)
   }
 }
 </script>

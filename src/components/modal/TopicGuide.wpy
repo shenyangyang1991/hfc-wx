@@ -1,0 +1,224 @@
+<style lang="less">
+.topic__guide_comp {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 99;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .topic__guide_wrap {
+    width: 670rpx;
+
+    padding: 42rpx;
+
+    background-color: #5a7bff;
+
+    border-radius: 32rpx;
+    overflow: hidden;
+
+    .topic__guide_head {
+      position: relative;
+
+      .topic__guide_read {
+        display: flex;
+        justify-content: center;
+
+        .topic__guide_readme {
+          width: 270rpx;
+
+          padding: 32rpx;
+
+          background-color: rgba(255, 255, 255, 0.2);
+
+          border-radius: 24rpx;
+          overflow: hidden;
+
+          .topic__guide_read-title {
+            height: 56rpx;
+
+            margin-bottom: 20rpx;
+
+            font-size: 34rpx;
+            color: #ffffff;
+            line-height: 56rpx;
+          }
+
+          .topic__guide_read-content {
+            font-size: 28rpx;
+            color: #ffffff;
+            line-height: 1.6;
+          }
+        }
+
+        .guide__right {
+          text-align: right;
+        }
+
+        .guide__left {
+          text-align: left;
+        }
+
+        .topic__guide_none {
+          display: flex;
+          align-items: center;
+
+          .topic__guide_none-child {
+            width: 50rpx;
+            height: 252rpx;
+
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+
+      .topic__guide_icon {
+        position: absolute;
+        top: 32rpx;
+        left: 207rpx;
+
+        display: flex;
+        align-items: center;
+
+        width: 176rpx;
+        height: 56rpx;
+
+        background-color: rgba(255, 255, 255, 0.2);
+
+        border-radius: 200rpx;
+        overflow: hidden;
+
+        .topic__guid_icon-col {
+          flex: 1;
+
+          display: flex;
+          justify-content: center;
+
+          .icon__safe {
+            width: 28rpx;
+            height: 28rpx;
+          }
+
+          .icon__equals {
+            width: 35rpx;
+            height: 35rpx;
+          }
+
+          .icon__gold {
+            width: 30rpx;
+            height: 30rpx;
+          }
+        }
+      }
+    }
+
+    .topic__guide_body {
+      margin-top: 40rpx;
+      padding: 30rpx;
+
+      background-color: rgba(255, 255, 255, 0.2);
+
+      border-radius: 24rpx;
+      overflow: hidden;
+
+      .topic__guide_title {
+        padding: 20rpx 0;
+
+        font-size: 34rpx;
+        color: #ffffff;
+      }
+
+      .topic__guide_content {
+        font-size: 28rpx;
+        color: #ffffff;
+        line-height: 1.6;
+      }
+    }
+
+    .topic__guide_foot {
+      display: flex;
+      justify-content: center;
+
+      .topic__guide_ok {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 296rpx;
+        height: 96rpx;
+
+        margin-top: 40rpx;
+
+        font-size: 30rpx;
+        color: #5a7bff;
+
+        background-color: #ffffff;
+
+        border-radius: 200rpx;
+        overflow: hidden;
+      }
+    }
+  }
+}
+</style>
+
+<template>
+  <view class="topic__guide_comp">
+    <view class="topic__guide_wrap">
+      <view class="topic__guide_head">
+        <view class="topic__guide_read">
+          <view class="topic__guide_readme">
+            <view class="topic__guide_read-title guide__left">社区活跃</view>
+            <view class="topic__guide_read-content">当天社区活跃产生的嗨点值和每个成员在社区内部的活跃值息息相关</view>
+          </view>
+          <view class="topic__guide_none">
+            <view class="topic__guide_none-child"></view>
+          </view>
+          <view class="topic__guide_readme">
+            <view class="topic__guide_read-title guide__right">社区代币</view>
+            <view class="topic__guide_read-content">社区成员共同创造财富，每晚零点会根据每个用户的社区价值发放给所有用户</view>
+          </view>
+        </view>
+        <view class="topic__guide_icon">
+          <view class="topic__guid_icon-col">
+            <image class="icon__safe" src="/assets/image/point.png" />
+          </view>
+          <view class="topic__guid_icon-col">
+            <image class="icon__equals" src="/assets/image/equals.png" />
+          </view>
+          <view class="topic__guid_icon-col">
+            <image class="icon__gold" src="/assets/image/gold.png" />
+          </view>
+        </view>
+      </view>
+
+      <view class="topic__guide_body">
+        <view class="topic__guide_title">
+          如何提高社区活跃值
+        </view>
+        <view class="topic__guide_content">
+          当天在社区内的活跃值由嗨点表示，用户每天在社区内部进行的创作，点赞，评论，分享等行为都能提高当天的嗨点值，平台每天发放固定的数值的代币HFC，根据嗨点值瓜分给所有用户，HFC的产出量每日递减，越早加入，获得的HFC奖励会越丰厚。
+        </view>
+      </view>
+
+      <view class="topic__guide_foot">
+        <view class="topic__guide_ok">我知道了</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class TopicGuide extends wepy.component {
+}
+</script>

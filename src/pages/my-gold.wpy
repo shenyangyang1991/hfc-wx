@@ -1,0 +1,44 @@
+<template>
+  <view class="my__gold_page page">
+    <view class="my__gold_view">
+      <view class="my__gold_preview">
+        <view class="my__gold_preview-panel">
+          <view class="my__gold_preview-name">我的HFC</view>
+          <view class="my__gold_preview-val">123.3</view>
+        </view>
+        <view class="my__gold_preview-about">
+          HFC介绍
+        </view>
+      </view>
+
+      <view class="my__gold_data">
+        <view wx:for="{{datas}}" wx:for-index="idx" wx:for-item="item" wx:key="unique" class="my__gold_data-item {{idx == 2 ? '' : 'my__gold_data-split'}}">
+          <view class="my__gold_data-key">
+            {{item.name}}
+          </view>
+          <view class="my__gold_data-val">
+            {{item.count}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class MyGold extends wepy.page {
+  data = {
+    datas: [{
+      name: '昨日HFC',
+      count: '12.4'
+    }, {
+      name: '昨日排名',
+      count: '12322'
+    }, {
+      name: '当前HFC',
+      count: '12.4'
+    }]
+  }
+}
+</script>

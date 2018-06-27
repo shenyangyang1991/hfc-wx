@@ -1,0 +1,118 @@
+<template>
+  <view class="page my__point_page">
+    <view class="my__point_wrap">
+      <view class="my__point_preview">
+        <view class="my__point_preview-head">
+          <view class="my__point_preview-col">
+            <view class="my__point_preview-title">
+              <image class="my__point_preview-point-icon" src="/assets/image/point.png" />
+              <view class="my__point_preview-name">
+                我的嗨点
+              </view>
+            </view>
+            <view class="my__point_preview-val">
+              987
+            </view>
+          </view>
+          <view class="my__point_preview-col">
+            <view class="my__point_preview-title">
+              <image class="my__point_preview-point-icon" src="/assets/image/gold.png" />
+              <view class="my__point_preview-name">
+                预计收益
+              </view>
+            </view>
+            <view class="my__point_preview-val">
+              12.3
+              <view class="my__point_preview-unit">
+                HFC
+              </view>
+            </view>
+          </view>
+
+          <view class="my__point_preview-about-point">
+            关于嗨点
+          </view>
+        </view>
+
+        <view class="my__point_preview-foot" style="background-image: url('{{previewBg}}');">
+          <view class="my__point_preview-point-total">
+            今日全球嗨点：12222
+          </view>
+        </view>
+      </view>
+
+      <view class="my__point_main">
+        <main-task-panel themeColor="#ffc233" title="邀请好友赢嗨点" titleFontSize="48rpx" desc="2018.06.30-2018.09.30" goName="去邀请" />
+      </view>
+
+      <view class="my__point_task">
+        <view class="my__point_task-title">
+          每日任务
+        </view>
+
+        <repeat for="{{taskList}}" key="index" index="index" item="task">
+          <task-panel :themeColor="task.themeColor" :title="task.title" :titleFontSize="task.titleFontSize" :desc="task.desc" :goName="task.goName" />
+        </repeat>
+      </view>
+
+      <view class="my__point_about">
+        <view class="my__point_about-title">
+          嗨点说明
+        </view>
+
+        <view class="my__point_about-desc">
+          嗨点是嗨币HFC的产生来源，每天你在使用嗨范儿时会产生
+嗨点，产生的嗨点会自动转化为嗨币HFC
+        </view>
+
+        <view class="my__point_about-desc">
+          注意：嗨范儿每天发放的嗨币HFC总量为M，则你每天可以
+获得的HFC=M*(你当天的嗨点/当天所有用户嗨点总和)每天
+00:00结算
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import config from '@/config/index'
+
+import TaskPanel from '@/components/point/TaskPanel'
+export default class MyPoint extends wepy.page {
+  components = {
+    'main-task-panel': TaskPanel,
+    'task-panel': TaskPanel
+  }
+  data = {
+    previewBg: config.image.myPoint.previewBg,
+    taskList: [{
+      themeColor: '#6cc5fe',
+      title: '每日签到',
+      titleFontSize: '32rpx',
+      desc: '今日签到+5嗨点',
+      goName: '去签到'
+    }, {
+      themeColor: '#fe8431',
+      title: '发布动态',
+      titleFontSize: '32rpx',
+      desc: '发布语音+10嗨点，图片+8嗨点',
+      goName: '去发布'
+    }, {
+      themeColor: '#23cbaa',
+      title: '社区互动',
+      titleFontSize: '32rpx',
+      desc: '评论，点赞，转发+3嗨点',
+      goName: '去互动'
+    }, {
+      themeColor: '#82cd88',
+      title: '每日分享',
+      titleFontSize: '32rpx',
+      desc: '每天分享到群自动加嗨点',
+      goName: '去分享'
+    }]
+  }
+}
+</script>

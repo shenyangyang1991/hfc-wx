@@ -1,0 +1,53 @@
+<style lang="less">
+
+</style>
+
+<template>
+  <view class="my__message_page page">
+    <view class="my__message_title">
+      消息
+    </view>
+
+    <view class="my__message_list">
+      <view class="my__message_item" wx:for="{{messages}}" wx:key="unique" wx:for-index="idx" wx:for-item="item">
+        <view class="my__message_icon" style="background-color: {{item.themeColor}};">
+          <image class="my__message_icon-i" src="{{item.icon}}" />
+        </view>
+        <view class="my__message_content {{idx == 0 ? 'my_message_split' : ''}}">
+          <view class="my__message_context">
+            <view class="my__message_name">
+              {{item.name}}
+            </view>
+            <view class="my__message_desc">
+              {{item.desc}}
+            </view>
+          </view>
+          <view class="my__message_count">
+            {{item.count}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class MyMessage extends wepy.page {
+  data = {
+    messages: [{
+      themeColor: '#5f7af1',
+      icon: '/assets/image/icon-like.png',
+      name: '新的点赞',
+      desc: '小墨鱼赞了你的图片',
+      count: '30'
+    }, {
+      themeColor: '#f1a95f',
+      icon: '/assets/image/icon-message.png',
+      name: '新的评论',
+      desc: '小墨鱼评论了你的语音',
+      count: '15'
+    }]
+  }
+}
+</script>

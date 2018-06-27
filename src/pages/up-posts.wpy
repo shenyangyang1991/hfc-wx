@@ -1,0 +1,43 @@
+<template>
+  <view class="page up__posts_page">
+    <view class="up__posts_body">
+      <view class="up__posts_content">
+        <textarea class="up__posts_txt" placeholder="说您想说的Keep Real（140字以内）" placeholder-style="color: #a3a2a7;" />
+      </view>
+
+      <view class="up__posts_topic-wrap">
+        <view class="up__posts_topic-name">
+          少年来一段文明的Freestyle可好
+        </view>
+      </view>
+
+      <view class="up__posts_source-list">
+        <view wx:for="{{sources}}" wx:key="unique" wx:for-index="idx" wx:for-item="item" class="up__posts_source-item {{idx == 0 ? 'up__posts_source-split' : ''}}">
+          <image class="up__posts_source-icon" src="{{item.icon}}" />
+          <view class="up__posts_source-name">
+            {{item.name}}
+          </view>
+          <image class="up__posts_source-go" src="/assets/image/come-in.png" />
+        </view>
+      </view>
+    </view>
+    <view class="up__posts_upload">
+      发贴
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class UpPosts extends wepy.page {
+  data = {
+    sources: [{
+      icon: '',
+      name: '添加图片'
+    }, {
+      icon: '',
+      name: '上传音频'
+    }]
+  }
+}
+</script>

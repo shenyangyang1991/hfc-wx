@@ -1,0 +1,77 @@
+<template>
+  <view class="page invite__friend_page">
+    <view class="invite__friend_wrap">
+      <view class="invite__friend_body" style="background-image: url('{{previewBg}}');">
+        <view class="invite__friend_body-head">
+          <view class="invite__friend_user">
+            <image class="invite__friend_user-face" src="/assets/image/face.png" />
+            <view class="invite__friend_user-name">
+              申杨杨邀请您讨论
+            </view>
+          </view>
+
+          <view class="invite__friend_topic-name">
+            有种来一段文明的说唱
+          </view>
+
+          <view class="invite__friend_topic-split"></view>
+          <view class="invite__friend_topic-count">
+            <view class="invite__friend_topic-val">
+              213 人参与
+            </view>
+            <view class="invite__friend_topic-val-split">|</view>
+            <view class="invite__friend_topic-val">
+              1234 条内容
+            </view>
+          </view>
+
+          <view class="invite__friend_topic-gold">
+            <view class="invite__friend_topic-gold-key">
+              价值
+            </view>
+            <view class="invite__friend_topic-gold-val">
+              15HFC
+            </view>
+          </view>
+        </view>
+
+        <view class="invite__friend_body-foot">
+          <view class="invite__friend_body-foot-brand">
+            <view class="invite__friend_brand-name">
+              HIGHFANER
+            </view>
+            <view class="invite__friend_brand-desc">
+              扫码参与讨论瓜分HFC
+            </view>
+          </view>
+          <image class="invite__friend_body-foot-logo" src="{{brandLogo}}" />
+        </view>
+      </view>
+
+      <view class="invite__friend_foot">
+        <view class="invite__friend_foot-p">
+          保存图片分享到朋友圈邀请
+        </view>
+        <view class="invite__friend_foot-p">
+          好友加入将分别获得10嗨点
+        </view>
+        <view class="invite__friend_foot-save">
+          保存图片
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import config from '@/config/index'
+
+export default class InviteFriend extends wepy.page {
+  data = {
+    previewBg: config.image.inviteFriend.previewBg,
+    brandLogo: config.image.inviteFriend.brandLogo
+  }
+}
+</script>

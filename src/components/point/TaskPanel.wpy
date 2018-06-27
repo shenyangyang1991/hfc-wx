@@ -1,0 +1,73 @@
+<style lang="less">
+.task__panel_comp {
+
+  position: relative;
+  height: 144rpx;
+  padding: 0 30rpx;
+
+  margin-bottom: 30rpx;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 16rpx;
+  overflow: hidden;
+
+  .task__panel_context {
+
+    flex: 1;
+
+    color: #ffffff;
+
+    .task__panel_title {
+      
+      font-weight: 600;
+    }
+
+    .task__panel_desc {
+
+      font-size: 22rpx;
+    }
+  }
+
+  .task__panel_go {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 128rpx;
+    height: 56rpx;
+
+    font-size: 22rpx;
+
+    background-color: #ffffff;
+
+    border-radius: 48rpx;
+    overflow: hidden;
+  }
+}
+</style>
+
+<template>
+  <view class="task__panel_comp" style="background-color: {{themeColor}};">
+    <view class="task__panel_context">
+      <view class="task__panel_title" style="font-size: {{titleFontSize}};">
+        {{title}}
+      </view>
+      <view class="task__panel_desc">
+        {{desc}}
+      </view>
+    </view>
+    <view class="task__panel_go" style="color: {{themeColor}};">
+      {{goName}}
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class TaskPanel extends wepy.component {
+  props = ['themeColor', 'titleFontSize', 'title', 'desc', 'goName']
+}
+</script>

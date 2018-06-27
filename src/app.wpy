@@ -19,7 +19,13 @@ export default class extends wepy.app {
       'pages/follow',
       'pages/detail',
       'pages/comment',
-      'pages/user'
+      'pages/user',
+      'pages/demo',
+      'pages/invite-friend',
+      'pages/my-point',
+      'pages/my-message',
+      'pages/up-posts',
+      'pages/my-gold'
     ],
     window: {
       navigationBarBackgroundColor: '#ffffff',
