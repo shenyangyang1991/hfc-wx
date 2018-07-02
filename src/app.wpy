@@ -17,15 +17,18 @@ export default class extends wepy.app {
     pages: [
       'pages/index',
       'pages/follow',
-      'pages/detail',
+      'pages/topic-detail',
       'pages/comment',
       'pages/user',
-      'pages/demo',
-      'pages/invite-friend',
       'pages/my-point',
       'pages/my-message',
-      'pages/up-posts',
-      'pages/my-gold'
+      'pages/up-image',
+      'pages/up-voice',
+      'pages/my-gold',
+      'pages/my-posts',
+      'pages/about',
+      'pages/voice',
+      'pages/topic-share'
     ],
     window: {
       navigationBarBackgroundColor: '#ffffff',
@@ -37,8 +40,8 @@ export default class extends wepy.app {
       onReachBottomDistance: 50
     },
     tabBar: {
-      color: '#000000',
-      selectedColor: '#e21e4a',
+      color: '#c6c6c6',
+      selectedColor: '#212121',
       backgroundColor: '#ffffff',
       borderStyle: 'black',
       position: 'bottom',

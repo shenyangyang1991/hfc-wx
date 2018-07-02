@@ -1,0 +1,62 @@
+<template>
+  <view class="share_page page">
+    <canvas canvas-id="shareCanvas" style="width: 750rpx; height: 960rpx;"></canvas>
+    <view class="topic__share_tip">
+      保存图片或截图分享到朋友圈后每次独立用户扫码你都将获得10嗨点
+    </view>
+    <view class="share_save">
+      保存图片
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+export default class TopicShare extends wepy.page {
+  realSize(size) {
+    if (this.cacheSize[size]) return this.cacheSize[size]
+    let value = this.ratio * size
+    this.cacheSize[size] = value
+    return value
+  }
+  cacheSize = {}
+  data = {
+    ratio: 0
+  }
+  renderCard(ctx, height, image) {
+    ctx.drawImage(image, this.realSize(36), this.realSize(36), this.realSize(678), this.realSize(height))
+  }
+  renderUser(ctx, image, text) {
+    ctx.save()
+    ctx.arc(this.realSize(144), this.realSize(144), this.realSize(24), 0, 2 * Math.PI)
+    ctx.clip()
+    ctx.drawImage(image, this.realSize(120), this.realSize(120), this.realSize(48), this.realSize(48))
+    ctx.restore()
+    this.renderText(ctx, '申杨杨邀请您来参与', 26, 188, 155)
+  }
+  renderText(ctx, text, size, x, y) {
+    ctx.setTextAlign('left')
+    ctx.setFillStyle('#000000')
+    ctx.setFontSize(this.realSize(size))
+    ctx.fillText(text, this.realSize(x), this.realSize(y))
+  }
+  onLoad() {
+    const sys = wepy.getSystemInfoSync()
+    this.ratio = sys.windowWidth / 750
+
+    const ctx = wepy.createCanvasContext('shareCanvas')
+    this.renderCard(ctx, 888, '/assets/image/topic-share-bg.png')
+    this.renderUser(ctx, 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132')
+    // ctx.setTextAlign('left')
+    // ctx.setFillStyle('#000000')
+    // ctx.setFontSize(this.realSize(56))
+    // ctx.fillText('有种来一段文明', this.realSize(120), this.realSize(270), this.realSize(510))
+    // ctx.fillText('的说错', this.realSize(120), this.realSize(350), this.realSize(510))
+    // ctx.setTextAlign('left')
+    // ctx.setFillStyle('#000000')
+    // ctx.setFontSize(this.realSize(26))
+    // ctx.fillText('小墨鱼邀请你讨论', this.realSize(188), this.realSize(155))
+    ctx.draw()
+  }
+}
+</script>

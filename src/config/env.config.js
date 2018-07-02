@@ -1,6 +1,6 @@
 export default {
   dev: {
-    image: 'http://10.10.16.212/~shenyangyang/wx'
+    image: 'http://10.36.32.236/~shenyangyang/wx'
   },
   prod: {
   },

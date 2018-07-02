@@ -30,7 +30,7 @@
           </view>
 
           <view class="my__point_preview-about-point">
-            关于嗨点
+            关于我们
           </view>
         </view>
 
@@ -82,6 +82,9 @@ import config from '@/config/index'
 
 import TaskPanel from '@/components/point/TaskPanel'
 export default class MyPoint extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的嗨点'
+  }
   components = {
     'main-task-panel': TaskPanel,
     'task-panel': TaskPanel

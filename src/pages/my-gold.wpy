@@ -3,7 +3,7 @@
     <view class="my__gold_view">
       <view class="my__gold_preview">
         <view class="my__gold_preview-panel">
-          <view class="my__gold_preview-name">我的HFC</view>
+          <view class="my__gold_preview-name">HFC余额</view>
           <view class="my__gold_preview-val">123.3</view>
         </view>
         <view class="my__gold_preview-about">
@@ -22,12 +22,38 @@
         </view>
       </view>
     </view>
+
+    <view class="my__gold_detail">
+      HFC明细
+    </view>
+    <view class="my__gold_list">
+      <view wx:for="{{list}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="my__gold_item">
+        <view class="my__gold_content">
+          <view class="my__gold_name">
+            {{item.name}}
+          </view>
+          <view class="my__gold_time">
+            {{item.time}}
+          </view>
+        </view>
+        <view class="my__gold_num">
+          {{item.num}}
+        </view>
+      </view>
+    </view>
+    <view class="my__gold_group">
+      <view class="my__gold_pay">充值</view>
+      <view class="my__gold_get">提现</view>
+    </view>
   </view>
 </template>
 
 <script>
 import wepy from 'wepy'
 export default class MyGold extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的资产'
+  }
   data = {
     datas: [{
       name: '昨日HFC',
@@ -38,6 +64,27 @@ export default class MyGold extends wepy.page {
     }, {
       name: '当前HFC',
       count: '12.4'
+    }],
+    list: [{
+      name: '邀请奖励',
+      time: '2018-06-25 15:32:12',
+      num: '+10.00'
+    }, {
+      name: '邀请奖励',
+      time: '2018-06-25 15:32:12',
+      num: '+10.00'
+    }, {
+      name: '邀请奖励',
+      time: '2018-06-25 15:32:12',
+      num: '+10.00'
+    }, {
+      name: '邀请奖励',
+      time: '2018-06-25 15:32:12',
+      num: '+10.00'
+    }, {
+      name: '邀请奖励',
+      time: '2018-06-25 15:32:12',
+      num: '+10.00'
     }]
   }
 }

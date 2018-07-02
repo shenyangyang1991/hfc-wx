@@ -1,11 +1,12 @@
 <template>
   <view class="page index__page">
-    <hero title="推荐" desc="全球最热话题精选" />
+    <hero title="推荐" desc="全球精选热门频道" />
     <view class="index__body">
       <repeat for="{{topics}}" key="index" index="index" item="topic">
         <topic :topic.sync="topic" />
       </repeat>
     </view>
+    <guide />
   </view>
 </template>
 
@@ -13,10 +14,9 @@
 import wepy from 'wepy'
 import { connect } from 'wepy-redux'
 
-import Hero from '@/components/Hero'
-import Topic from '@/components/Topic'
-
-import colors from '@/utils/colors'
+import Hero from '@/components/topic/hero'
+import Topic from '@/components/topic/body'
+import Guide from '@/components/common/new-guide'
 
 @connect({
 })
@@ -28,28 +28,75 @@ export default class Index extends wepy.page {
 
   components = {
     'hero': Hero,
-    'topic': Topic
+    'topic': Topic,
+    'guide': Guide
   }
-
-  mixins = []
 
   data = {
     topics: []
   }
 
-  events = {
-  }
-
   async onLoad() {
+    setTimeout(() => {
+      this.$invoke('guide', 'show', {
+        logo: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        name: '欢迎加入',
+        desc: '嗨范儿是全球的最大青年文化社交网络'
+      })
+    }, 1000)
     this.topics = [{
-      a: colors()
+      id: '1',
+      title: '话题1',
+      people: '13K',
+      post: '11K',
+      hfc: '13K',
+      follow: false,
+      posts: [{
+        content_type: '0',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: '',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }, {
+        content_type: '1',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: 'http://wx2.sinaimg.cn/mw690/006ZrXHXgy1fsr074hxtyg308w07xu0x.gif',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }, {
+        content_type: '1',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: 'http://wx3.sinaimg.cn/mw690/006ZrXHXgy1fsr0qy8cp5g306z05mqqo.gif',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }]
     }, {
-      a: colors()
+      id: '2',
+      title: '话题2',
+      people: '13K',
+      post: '11K',
+      hfc: '13K',
+      follow: true,
+      posts: [{
+        content_type: '0',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: '',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }, {
+        content_type: '1',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }, {
+        content_type: '2',
+        title: '我就是喜欢那首送乐团的Life is struggle，可惜天妒英才',
+        content_file: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+      }]
     }]
-    let jscode = await wepy.login()
-    console.log(jscode)
-    let user = await wepy.getUserInfo()
-    console.log(user)
   }
 }
 </script>

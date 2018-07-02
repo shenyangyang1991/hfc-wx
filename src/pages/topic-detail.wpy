@@ -1,0 +1,130 @@
+<template>
+  <view class="page topic__detail_page">
+    <image class="topic__detail_poster" src="{{topic.poster}}" />
+    <view class="topic__detail_preview">
+      <view class="topic__detail_title">
+        {{topic.title}}
+      </view>
+      <view class="topic__detail_data">
+        <view class="topic__detail_val">
+          {{topic.people}} 人参与
+        </view>
+        <view class="topic__detail_split">
+          |
+        </view>
+        <view class="topic__detail_val">
+          {{topic.post}} 条动态
+        </view>
+        <view class="topic__detail_split">
+          |
+        </view>
+        <view class="topic__detail_val">
+          价值 {{topic.hfc}} HFC
+        </view>
+      </view>
+      <view class="topic__detail_btns">
+        <view class="topic__detail_btn topic__detail_follow">
+          关注话题
+        </view>
+        <view class="topic__detail_btn topic__detail_share" @tap="invite">
+          邀请好友
+        </view>
+      </view>
+    </view>
+    <view class="detail__body">
+      <repeat for="{{posts}}" key="index" index="index" item="post">
+        <posts :posts.sync="post" :index="index" />
+      </repeat>
+    </view>
+    <view class="topic__detail_join">
+      <navigator url="/pages/up-image" class="topic__detail_i">
+        <image class="topic__detail_i-icon" src="/assets/image/icon-img.png" />
+        <view class="topic__detail_i-name">发布图文</view>
+      </navigator>
+      <view class="topic__detail_i-split">
+      </view>
+      <navigator url="/pages/up-voice" class="topic__detail_i">
+        <image class="topic__detail_i-icon" src="/assets/image/icon-voice.png" />
+        <view class="topic__detail_i-name">上传语音</view>
+      </navigator>
+    </view>
+    <share />
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+import Posts from '@/components/topic/posts'
+import Share from '@/components/common/share'
+
+export default class TopicDetail extends wepy.page {
+  config = {
+    navigationBarTitleText: '话题详情'
+  }
+
+  components = {
+    'posts': Posts,
+    'share': Share
+  }
+
+  events = {
+    'share-event'() {
+      this.share()
+    }
+  }
+
+  share() {
+    this.$invoke('share', 'show')
+  }
+
+  methods = {
+    invite() {
+      this.share()
+    }
+  }
+
+  data = {
+    topic: {
+      poster: 'https://gw.alipayobjects.com/zos/rmsportal/xpykKKFJQorFJltdXkie.png',
+      title: '话题1',
+      people: '13K',
+      post: '11K',
+      hfc: '13K'
+    },
+    posts: [{
+      id: '1',
+      title: '还有一个月才开我的暑假生活',
+      nick_name: '申杨杨',
+      avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+      content_file: 'http://pic14.photophoto.cn/20100127/0036036848818577_b.jpg',
+      hfc: '10K',
+      like: false,
+      likes: '10K',
+      comments: [{
+        nick_name: '王博超',
+        context: 'cool'
+      }, {
+        nick_name: '王博超',
+        context: 'cool'
+      }]
+    }, {
+      id: '2',
+      title: '还有一个月才开我的暑假生活',
+      nick_name: '申杨杨',
+      avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+      content_file: 'http://pic14.photophoto.cn/20100127/0036036848818577_b.jpg',
+      hfc: '10K',
+      likes: '10K',
+      like: true,
+      comments: [{
+        nick_name: '王博超',
+        context: 'cool'
+      }, {
+        nick_name: '王博超',
+        context: 'cool'
+      }]
+    }]
+  }
+}
+</script>

@@ -1,27 +1,28 @@
 <template>
   <view class="comment__page page">
-    <hero title="评论" desc="参与评论，瓜分10亿HFC" />
-    <view class="comment__page_body">
+    <view class="comment__head">
+      <view class="comment__head_title">
+        评论
+      </view>
+      <view class="comment__head_desc">
+        共{{comments.total}}条评论
+      </view>
+    </view>
+    <view class="comment__body">
       <scroll-view style="height: {{scrollHeight}}px;" scroll-y>
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
-        <comment-item />
+        <repeat for="{{comments.list}}" key="index" index="index" item="comment">
+          <comment-item :comment.sync="comment" :index="index" />
+        </repeat>
       </scroll-view>
     </view>
-    <view class="comment__page_comments">
+    <view class="comment__comments">
       <form>
-        <view class="comment__page_form">
-          <input class="comment__page_input" cursor-spacing="{{inputPadding}}" type="text" placeholder="说点什么吧" placeholder-style="color: #2e2e30;" />
-          <button class="comment__page_submit" formType="submit">发送</button>
+        <view class="comment__form_wrap">
+          <image class="comment__avatar_url" src="{{user.avatar_url}}" />
+          <view class="comment__form">
+            <input class="comment__input" cursor-spacing="{{inputPadding}}" type="text" placeholder="说点什么吧" placeholder-style="color: #9b9b9b;" />
+            <button class="comment__submit" formType="submit">发送</button>
+          </view>
         </view>
       </form>
     </view>
@@ -31,8 +32,7 @@
 <script>
 import wepy from 'wepy'
 
-import Hero from '@/components/Hero'
-import CommentItem from '@/components/CommentItem'
+import CommentItem from '@/components/comment/item'
 
 export default class Comment extends wepy.page {
   config = {
@@ -42,21 +42,48 @@ export default class Comment extends wepy.page {
     winWidth: 0,
     winHeight: 0,
     scrollHeight: 0,
-    inputPadding: 0
+    inputPadding: 0,
+    comments: [],
+    user: {
+      nick_name: '申杨杨',
+      avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+    }
   }
   components = {
-    'hero': Hero,
     'comment-item': CommentItem
   }
   realSize(size) {
     return this.winWidth / 750 * size
   }
   onLoad() {
-    let sys = wepy.getSystemInfoSync() || {}
+    let sys = wepy.getSystemInfoSync()
     this.winWidth = sys.windowWidth || 750
     this.winHeight = sys.windowHeight || 1334
-    this.scrollHeight = this.winHeight - this.realSize(98) - this.realSize(168)
+    this.scrollHeight = this.winHeight - this.realSize(108) - this.realSize(215)
     this.inputPadding = this.realSize(27)
+
+    this.comments = {
+      total: 3,
+      list: [{
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        reply_name: '',
+        context: '评论1',
+        time: '11:00'
+      }, {
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        reply_name: '王博超',
+        context: '评论1',
+        time: '11:00'
+      }, {
+        nick_name: '申杨杨',
+        avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132',
+        reply_name: '王博超',
+        context: '评论1',
+        time: '11:00'
+      }]
+    }
   }
 }
 </script>

@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -56,15 +56,39 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "发贴",
-					"pathName": "pages/up-posts",
+					"pathName": "pages/up-image",
 					"query": ""
 				},
 				{
 					"id": -1,
 					"name": "我的嗨币",
 					"pathName": "pages/my-gold",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的动态",
+					"pathName": "pages/my-posts",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/about",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "录音",
+					"pathName": "pages/voice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "话题分享",
+					"pathName": "pages/topic-share",
 					"query": ""
 				}
 			]

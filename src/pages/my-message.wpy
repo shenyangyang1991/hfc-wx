@@ -1,7 +1,3 @@
-<style lang="less">
-
-</style>
-
 <template>
   <view class="my__message_page page">
     <view class="my__message_title">
@@ -34,15 +30,18 @@
 <script>
 import wepy from 'wepy'
 export default class MyMessage extends wepy.page {
+  config = {
+    navigationBarTitleText: '消息通知'
+  }
   data = {
     messages: [{
-      themeColor: '#5f7af1',
+      themeColor: '#3462ff',
       icon: '/assets/image/icon-like.png',
       name: '新的点赞',
       desc: '小墨鱼赞了你的图片',
       count: '30'
     }, {
-      themeColor: '#f1a95f',
+      themeColor: '#03c0ff',
       icon: '/assets/image/icon-message.png',
       name: '新的评论',
       desc: '小墨鱼评论了你的语音',

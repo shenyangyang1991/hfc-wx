@@ -1,7 +1,9 @@
+@import "../base/fn.less";
+
 .my__gold_view {
 
   position: relative;
-  background-color: #5a7bff;
+  background-color: #3462ff;
 }
 
 .my__gold_preview {
@@ -27,7 +29,7 @@
 
     .my__gold_preview-val {
 
-      font-family: "DIN Condensed";
+      font-family: "HFC";
       font-size: 96rpx;
       color: #ffffff;
     }
@@ -89,7 +91,110 @@
 
       font-size: 32rpx;
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 500;
     }
+  }
+}
+
+.my__gold_detail {
+
+  .flex-box();
+
+  .box-middle();
+
+  height: 108rpx;
+
+  font-size: 32rpx;
+  color: #212121;
+  font-weight: 500;
+
+  padding: 0 30rpx;
+
+  background-color: #f8f8f8;
+}
+
+.my__gold_list {
+
+  padding-bottom: 96rpx;
+}
+
+.my__gold_item {
+
+  .flex-box();
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 30rpx;
+
+  border-top: 1rpx solid rgba(0,0,0,0.05);
+
+  .my__gold_content {
+
+    flex: 1;
+
+    .my__gold_name {
+
+      font-size: 32rpx;
+      color: #212121;
+    }
+
+    .my__gold_time {
+
+      font-size: 24rpx;
+      color: #212121;
+
+      opacity: 0.6;
+    }
+  }
+
+  .my__gold_num {
+
+    font-size: 32rpx;
+    color: #3462ff;
+    font-weight: 500;
+  }
+}
+
+.my__gold_group {
+
+  box-shadow: 0 0 24rpx 0 rgba(0,0,0,0.05);
+
+  .flex-box();
+
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+
+  width: 750rpx;
+  height: 96rpx;
+
+  background-color: #ffffff;
+
+  .my__gold_pay {
+
+    .flex-box();
+
+    .box-center();
+
+    flex: 1;
+
+    font-size: 32rpx;
+    color: #3462ff;
+  }
+
+  .my__gold_get {
+
+    .flex-box();
+
+    .box-center();
+
+    flex: 1;
+
+    font-size: 32rpx;
+    color: #ffffff;
+
+    background-color: #3462ff;
   }
 }
