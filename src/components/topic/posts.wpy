@@ -178,9 +178,6 @@
 
             font-weight: @font_medium;
           }
-
-          .posts__comments_content {
-          }
         }
 
         .posts__comments_view {
@@ -201,10 +198,10 @@
     <view class="posts__wrap {{index == 0 ? 'posts__no_border' : ''}}">
       <view class="posts__head">
         <view class="posts__user">
-          <image class="posts__avatar_url" src="{{posts.avatar_url}}" />
+          <image class="posts__avatar_url" src="{{posts.user.avatar_url}}" />
           <view class="posts__info">
             <view class="posts__user_name">
-              {{posts.nick_name}}
+              {{posts.user.nick_name}}
             </view>
             <view class="posts__time">1周前</view>
           </view>
@@ -212,13 +209,15 @@
         <image class="posts__more" src="/assets/image/more.png" />
       </view>
       <view class="posts__body">
-        <view class="posts__title">
+        <view wx:if="{{posts.title}}" class="posts__title">
           {{posts.title}}
         </view>
-        <view class="posts__content">
-          <image class="img" mode="widthFix" src="{{posts.content_file}}" />
+        <view wx:if="{{posts.poster}}" class="posts__content">
+          <image class="img" mode="widthFix" src="{{posts.poster}}" />
         </view>
-        <!-- <view class="posts__voice"></view> -->
+        <view wx:if="{{posts.voice}}" class="posts__voice">
+          <audio poster="{{posts.user.avatar_url}}" src="{{posts.voice}}" controls loop></audio>
+        </view>
       </view>
       <view class="posts__foot">
         <view class="posts__action">
@@ -227,17 +226,17 @@
             <image class="comment" src="/assets/image/comment.png" @tap="toComment" />
             <image class="share" src="/assets/image/share.png" @tap="openShare" />
           </view>
-          <view class="posts__hfc">
+          <!-- <view class="posts__hfc">
             {{posts.hfc}} HFC
-          </view>
+          </view> -->
         </view>
         <view class="posts__count">
-          <view class="posts__count_like">{{posts.likes}} 次点赞</view>
+          <view class="posts__count_like">{{posts.like_cnt}}次点赞</view>
         </view>
         <view class="posts__comments">
-          <view wx:for="{{posts.comments}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="posts__comments_item">
-            <view class="posts__comments_name">{{item.nick_name}}：</view>
-            <view class="posts__comments_content">{{item.context}}</view>
+          <view wx:for="{{posts.comment_list}}" wx:key="unique" wx:for-index="i" wx:for-item="item" class="posts__comments_item">
+            <view class="posts__comments_name">{{item.user.nick_name}}：</view>
+            <view class="posts__comments_content">{{item.title}}</view>
           </view>
           <view class="posts__comments_view" @tap="toComment">
             查看3条评论

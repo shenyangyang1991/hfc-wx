@@ -74,10 +74,12 @@ export default class Share extends wepy.component {
   data = {
     shares: [{
       icon: '/assets/image/icon-wx.png',
-      name: '微信联系人'
+      name: '微信联系人',
+      type: 'share'
     }, {
       icon: '/assets/image/icon-juan.png',
-      name: '微信朋友圈'
+      name: '微信朋友圈',
+      url: '/pages/topic-share'
     }],
     reveal: false,
     animationData: '',
@@ -124,10 +126,18 @@ export default class Share extends wepy.component {
   <view class="share__comp {{reveal ? '' : 'share__comp_hide'}}" @tap="hide">
     <view class="share__wrap" animation="{{animationData}}" @tap.stop="none">
       <view wx:for="{{shares}}" wx:key="unique" wx:for-index="index" wx:for-item="item" class="share__item">
-        <image class="share__icon" src="{{item.icon}}" />
-        <view class="share__name">
-          {{item.name}}
-        </view>
+        <button wx:if="{{item.type}}" open-type="{{item.type}}" hover-class="none" class="share__item">
+          <image class="share__icon" src="{{item.icon}}" />
+          <view class="share__name">
+            {{item.name}}
+          </view>
+        </button>
+        <navigator url="{{item.url}}" wx:else class="share__item" hover-class="none">
+          <image class="share__icon" src="{{item.icon}}" />
+          <view class="share__name">
+            {{item.name}}
+          </view>
+        </navigator>
       </view>
     </view>
   </view>

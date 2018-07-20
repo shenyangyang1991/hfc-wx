@@ -1,11 +1,13 @@
 <template>
   <view class="share_page page">
     <canvas canvas-id="shareCanvas" style="width: 750rpx; height: 960rpx;"></canvas>
-    <view class="topic__share_tip">
+    <view class="share__foot">
+      <view class="topic__share_tip">
       保存图片或截图分享到朋友圈后每次独立用户扫码你都将获得10嗨点
-    </view>
-    <view class="share_save">
-      保存图片
+      </view>
+      <view class="share_save" @tap="saveImage">
+        保存图片
+      </view>
     </view>
   </view>
 </template>
@@ -19,43 +21,140 @@ export default class TopicShare extends wepy.page {
     this.cacheSize[size] = value
     return value
   }
+  str2Arr(str, len) {
+    const arr = str.split('')
+    const length = parseInt(arr.length / len)
+    for (let index = 1; index < (length + 1); index++) {
+      arr.splice(index * 7, 0, '|')
+    }
+    const result = arr.join('')
+    return result.split('|')
+  }
   cacheSize = {}
   data = {
-    ratio: 0
+    ratio: 0,
+    card: {
+      x: 0,
+      y: 0,
+      w: 750,
+      h: 960
+    },
+    avatar: {
+      x: 120,
+      y: 120,
+      w: 48,
+      h: 48
+    },
+    name: {
+      x: 188,
+      y: 155,
+      fontSize: 26
+    },
+    title: {
+      x: 120,
+      y: 300,
+      fontSize: 56
+    },
+    prop: {
+      x: 120,
+      y: 506,
+      fontSize: 26
+    },
+    goldName: {
+      x: 120,
+      y: 574,
+      fontSize: 26
+    },
+    goldValue: {
+      x: 192,
+      y: 574,
+      fontSize: 40
+    },
+    brand: {
+      x: 240,
+      y: 762,
+      fontSize: 36
+    },
+    guide: {
+      x: 184,
+      y: 810,
+      fontSize: 26
+    },
+    qcode: {
+      x: 486,
+      y: 698,
+      w: 144,
+      h: 144
+    },
+    user: {
+      nick_name: '申杨杨',
+      avatar_url: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132'
+    },
+    topic: {
+      title: '有种来一段文明的说唱',
+      people: '122',
+      post: '213',
+      hfc: '2342',
+      qcode: '/assets/image/qcode.png'
+    }
   }
-  renderCard(ctx, height, image) {
-    ctx.drawImage(image, this.realSize(36), this.realSize(36), this.realSize(678), this.realSize(height))
-  }
-  renderUser(ctx, image, text) {
-    ctx.save()
-    ctx.arc(this.realSize(144), this.realSize(144), this.realSize(24), 0, 2 * Math.PI)
-    ctx.clip()
-    ctx.drawImage(image, this.realSize(120), this.realSize(120), this.realSize(48), this.realSize(48))
-    ctx.restore()
-    this.renderText(ctx, '申杨杨邀请您来参与', 26, 188, 155)
-  }
-  renderText(ctx, text, size, x, y) {
-    ctx.setTextAlign('left')
-    ctx.setFillStyle('#000000')
-    ctx.setFontSize(this.realSize(size))
-    ctx.fillText(text, this.realSize(x), this.realSize(y))
+  methods = {
+    async saveImage() {
+      const images = await wepy.canvasToTempFilePath({
+        canvasId: 'shareCanvas'
+      })
+      await wepy.saveImageToPhotosAlbum({
+        filePath: images.tempFilePath
+      })
+    }
   }
   onLoad() {
     const sys = wepy.getSystemInfoSync()
     this.ratio = sys.windowWidth / 750
 
     const ctx = wepy.createCanvasContext('shareCanvas')
-    this.renderCard(ctx, 888, '/assets/image/topic-share-bg.png')
-    this.renderUser(ctx, 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJNMn9LbPuI5dbk1DcFAT69A8iaolzTNkrYakIq6Eu5ndPM0PtHDGWl0ibh0WHEUemkQsW9lGYVJQgA/132')
-    // ctx.setTextAlign('left')
-    // ctx.setFillStyle('#000000')
-    // ctx.setFontSize(this.realSize(56))
-    // ctx.fillText('有种来一段文明', this.realSize(120), this.realSize(270), this.realSize(510))
-    // ctx.fillText('的说错', this.realSize(120), this.realSize(350), this.realSize(510))
-    // ctx.setTextAlign('left')
-    // ctx.setFillStyle('#000000')
-    // ctx.setFontSize(this.realSize(26))
-    // ctx.fillText('小墨鱼邀请你讨论', this.realSize(188), this.realSize(155))
+    // 背景
+    ctx.drawImage('/assets/image/topic-share-bg.png', this.realSize(this.card.x), this.realSize(this.card.y), this.realSize(this.card.w), this.realSize(this.card.h))
+    // 用户信息
+    // 头像
+    ctx.save()
+    ctx.arc(this.realSize(144), this.realSize(144), this.realSize(24), 0, 2 * Math.PI)
+    ctx.clip()
+    ctx.drawImage(this.user.avatar_url, this.realSize(this.avatar.x), this.realSize(this.avatar.y), this.realSize(this.avatar.w), this.realSize(this.avatar.h))
+    ctx.restore()
+    // 昵称
+    ctx.setFillStyle('#000000')
+    ctx.setFontSize(this.realSize(this.name.fontSize))
+    ctx.fillText(`${this.user.nick_name}邀请您讨论`, this.realSize(this.name.x), this.realSize(this.name.y))
+
+    // 标题
+    ctx.setFontSize(this.realSize(this.title.fontSize))
+    const titles = this.str2Arr(this.topic.title, 7)
+    titles.forEach((title, index) => {
+      ctx.fillText(title, this.realSize(this.title.x), this.realSize(this.title.y + index * 70))
+    })
+    // 属性
+    ctx.setFontSize(this.realSize(this.prop.fontSize))
+    ctx.fillText(`${this.topic.people}人参与  |  ${this.topic.post}条内容`, this.realSize(this.prop.x), this.realSize(this.prop.y))
+
+    // 价值
+    ctx.setFontSize(this.realSize(this.goldName.fontSize))
+    ctx.fillText('价值', this.realSize(this.goldName.x), this.realSize(this.goldName.y))
+    ctx.setFontSize(this.realSize(this.goldValue.fontSize))
+    ctx.setFillStyle('#3462ff')
+    ctx.fillText(`${this.topic.hfc}HFC`, this.realSize(this.goldValue.x), this.realSize(this.goldValue.y))
+
+    // 品牌
+    ctx.setFontSize(this.realSize(this.brand.fontSize))
+    ctx.setFillStyle('#000000')
+    ctx.fillText('HIGHFANER', this.realSize(this.brand.x), this.realSize(this.brand.y))
+    // 引导
+    ctx.setFontSize(this.realSize(this.guide.fontSize))
+    ctx.fillText('扫码参与讨论瓜分HFC', this.realSize(this.guide.x), this.realSize(this.guide.y))
+
+    // 二维码
+    ctx.drawImage(this.topic.qcode, this.realSize(this.qcode.x), this.realSize(this.qcode.y), this.realSize(this.qcode.w), this.realSize(this.qcode.h))
+
     ctx.draw()
   }
 }

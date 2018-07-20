@@ -11,7 +11,7 @@
     <view class="comment__body">
       <scroll-view style="height: {{scrollHeight}}px;" scroll-y>
         <repeat for="{{comments.list}}" key="index" index="index" item="comment">
-          <comment-item :comment.sync="comment" :index="index" />
+          <comment-item :comment.sync="comment" :index.sync="index" />
         </repeat>
       </scroll-view>
     </view>
